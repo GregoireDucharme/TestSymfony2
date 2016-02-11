@@ -59,7 +59,6 @@
 			}
 			$count = 0;
 			$elementArray = [];
-			console.log($infoArray);
 			while ($count < $infoArray.length)
 			{
 				$tmpElement = $("input[name='" + $orderBy + "'][value=\""+$infoArray[$count]+"\"]").parent().clone();
@@ -97,7 +96,6 @@
  			if (e.keyCode == k[n++]) {  
  				if (n == k.length) {  
 					$("#body").fadeIn(500).fadeOut(600).fadeIn(700).fadeOut(900).fadeIn(1000).fadeOut(2000).fadeIn(3000);
-					console.log("Kdnami");
  					return 1  
  				}  
  			} else n = 0;
