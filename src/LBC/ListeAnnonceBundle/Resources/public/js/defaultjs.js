@@ -90,5 +90,17 @@
 				$("#body").append($elementArray[$count++]);
 			}
 		})
+
+		var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],  
+ 		n = 0;  
+ 		$(document).keydown(function (e) {  
+ 			if (e.keyCode == k[n++]) {  
+ 				if (n == k.length) {  
+					$("#body").fadeIn(500).fadeOut(600).fadeIn(700).fadeOut(900).fadeIn(1000).fadeOut(2000).fadeIn(3000);
+					console.log("Kdnami");
+ 					return 1  
+ 				}  
+ 			} else n = 0;
+ 		});  
 	});
 })(jQuery);
