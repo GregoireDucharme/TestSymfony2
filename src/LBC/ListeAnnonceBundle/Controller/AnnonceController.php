@@ -15,6 +15,8 @@ class AnnonceController extends Controller
     	$manager = $this->getDoctrine()->getManager();
 		$annonceRepo = $manager->getRepository('LBCListeAnnonceBundle:Annonce');
 		$annonce = $annonceRepo->find($id);
+		$prevAnnonce = null;
+		$nextAnnonce = null;
 		if ($id > 1)
 			$prevAnnonce = $annonceRepo->find($id - 1);
 		if ($id < 99)
