@@ -18,13 +18,26 @@
     overflow: hidden;
 }
 
+#annonce {
+    margin: 2%;
+    border-radius: 20px;
+    padding: 2%;
+    width: 30%;
+    margin: auto;
+}
+
 .infos {
 	float: right;
 }
 .hidden {
 	display: none;
 }
-.annonce h2, h1.title {
+
+.floatright {
+	float: right;
+}
+
+.annonce h2, #annonce h2, h1.title {
 	color: #369;
 }
 

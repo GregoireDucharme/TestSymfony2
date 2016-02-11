@@ -1,3 +1,10 @@
 lbc_liste_annonce_home:
     path:      /
     defaults:  { _controller: LBCListeAnnonceBundle:Liste:index }
+
+
+lbc_annonce:
+    path: /annonce-{id}
+    defaults: { _controller: LBCListeAnnonceBundle:Annonce:index }
+    requirements:
+        page: \d*

@@ -1,0 +1,41 @@
+{% extends "LBCListeAnnonceBundle::index.html.twig" %}
+
+{% block content %}
+	<div class="tri">
+		<label>Trier par
+			<select name="order">
+				<option value="id">Default</option>
+				<option value="titre">Titre</option>
+				<option value="lieu">Lieu</option>
+				<option value="prix">Prix</option>
+			</select>
+		</label>
+		<input type="text" placeholder="recherche" name="search">
+		<button name="reverse" value="reverse">Inverser</button>
+	</div>
+	{% for annonce in annonces %}
+		<a href={{ path('lbc_annonce', { 'id': annonce.id }) }}>
+			<div class="annonce">
+				<h2>
+					{{annonce.titre}}
+				</h2>
+				{% if (annonce.image != "") %}
+					<img src={{annonce.image}}>
+				{% endif %}
+				<div class="infos">
+					<div>{{annonce.date}}</div>
+					<div>{{annonce.lieu}}</div>
+					<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+				</div>
+				<div class="hidden searchWord">
+					{{annonce.titre ~ " " ~ annonce.lieu ~ " " ~ annonce.prix}}
+				</div>
+				<input type="hidden" name="id" value="{{annonce.id}}">
+				<input type="hidden" name="prix" value="{{annonce.prix}}">
+				<input type="hidden" name="lieu" value="{{annonce.lieu|trim}}">
+				<input type="hidden" name="titre" value="{{annonce.titre|trim}}">
+			</div>
+		</a>
+	{% endfor %}
+
+{% endblock %}

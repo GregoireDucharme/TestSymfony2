@@ -12,11 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Annonce
 {
-    function __construct($title, $placement, $price, $imageUrl)
+    function __construct($title, $placement, $price, $date, $imageUrl)
     {
         $this->titre = $title;
         $this->lieu = trim($placement);
         $this->prix = (int)$price;
+        $this->date = $date;
         $this->image = $imageUrl;
     }
     public function Compare($annonceToCompare)
@@ -61,6 +62,13 @@ class Annonce
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
+
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="date", type="string", length=255)
+     */
+    private $date;
 
     /**
      * Get id
@@ -162,5 +170,28 @@ class Annonce
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set date
+     *
+     * @param string $date
+     * @return Annonce
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return string 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

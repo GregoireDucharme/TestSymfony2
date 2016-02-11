@@ -44,14 +44,14 @@ class ListeController extends Controller
 			foreach ($crawler->filter('.lbc') as $lbcAnnonce)
 			{
 				$tmpCrawler = new Crawler($lbcAnnonce);
-				$infoNeeded = array("title" => "", "placement" => "", "price" => "");
+				$infoNeeded = array("title" => "", "placement" => "", "price" => "", "date" => "");
 				foreach ($infoNeeded as $key => $value)
 				{
 					$tmpNode = $tmpCrawler->filter('.' . $key);
 					if (count($tmpNode) > 0)
 						$infoNeeded[$key] = $tmpCrawler->filter('.' . $key)->text();
 				}
-				$newAnnonce = new Annonce($infoNeeded['title'], $infoNeeded['placement'], $infoNeeded['price'], $this->getImage($tmpCrawler));
+				$newAnnonce = new Annonce($infoNeeded['title'], $infoNeeded['placement'], $infoNeeded['price'], $infoNeeded['date'], $this->getImage($tmpCrawler));
 
 				// Si actualisation de la BDD, verification de l'existence ou non de l'annonce, si oui, fin de la boucle
 				if (!$initRepo)
@@ -102,6 +102,6 @@ class ListeController extends Controller
     	$this->fillAnnonceRepo($manager, $annonces);
 		$manager->flush();
 		$annonces = $annonceRepo->findAll();
-        return new Response($this->renderView("LBCListeAnnonceBundle:Liste:content.html.twig", array('annonces' => $annonces)));
+        return new Response($this->renderView("LBCListeAnnonceBundle:Liste:contentListeAnnonce.html.twig", array('annonces' => $annonces)));
     }
 }

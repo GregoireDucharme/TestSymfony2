@@ -4,9 +4,7 @@
 		$("input[name='search']").change(function()
 		{
 			$textSearch = $(this).val();
-			console.log($textSearch);
 			$(".searchWord").each(function(index) {
-				console.log(index);
 				if ($(this).html().toLowerCase().search($textSearch.toLowerCase()) == -1)
 					$(this).parent().hide();
 				else
@@ -26,8 +24,6 @@
 					case 'titre':
 					case 'lieu':
 						$infoArray.push($(this).find("input[name=" + infoName + "]").val());
-						console.log("titre=");
-						console.log($(this).find("input[name=" + infoName + "]").val());
 						break;
 
 				}
@@ -40,7 +36,6 @@
 		$("select[name='order']").change(function()
 		{
 			$orderBy = $(this).val();
-			console.log($orderBy);
 			$infoArray = getInfo($orderBy);
 			switch ($orderBy)
 			{

@@ -1,0 +1,55 @@
+{% extends "LBCListeAnnonceBundle::index.html.twig" %}
+
+{% block content %}
+	<a href={{ path('lbc_liste_annonce_home')}}> &larr; Retour à la liste</a>
+	<div id="annonce">
+		<h2>
+			{{annonce.titre}}
+		</h2>
+		{% if (annonce.image != "") %}
+			<img src={{annonce.image}}>
+		{% endif %}
+		<div class="infos">
+			<div>{{annonce.date}}</div>
+			<div>{{annonce.lieu}}</div>
+			<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+		</div>
+	</div>
+	{% if prevAnnonce != null %}
+		<a href={{ path('lbc_annonce', { 'id': prevAnnonce.id }) }}>
+			<div class="annonce">
+				 &larr; Annonce précedente
+				<h2>
+					{{prevAnnonce.titre}}
+				</h2>
+				{% if (prevAnnonce.image != "") %}
+					<img src={{prevAnnonce.image}}>
+				{% endif %}
+				<div class="infos">
+					<div>{{prevAnnonce.date}}</div>
+					<div>{{prevAnnonce.lieu}}</div>
+					<div>{{ prevAnnonce.prix == 0 ? "Prix non renseigné" : prevAnnonce.prix ~ "€"}}</div>
+				</div>
+			</div>
+		</a>
+	{% endif %}
+	{% if nextAnnonce != null %}
+		<a href={{ path('lbc_annonce', { 'id': nextAnnonce.id }) }}>
+			<div class="annonce floatright">
+				Annonce suivante &rarr;
+				<h2>
+					{{nextAnnonce.titre}}
+				</h2>
+				{% if (nextAnnonce.image != "") %}
+					<img src={{nextAnnonce.image}}>
+				{% endif %}
+				<div class="infos">
+					<div>{{nextAnnonce.date}}</div>
+					<div>{{nextAnnonce.lieu}}</div>
+					<div>{{ nextAnnonce.prix == 0 ? "Prix non renseigné" : nextAnnonce.prix ~ "€"}}</div>
+				</div>
+			</div>
+		</a>
+	{% endif %}
+
+{% endblock %}
