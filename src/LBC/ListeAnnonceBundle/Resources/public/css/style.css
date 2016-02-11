@@ -1,0 +1,28 @@
+#body {
+    margin: auto;
+    width: 80%;
+    background: #e9eaed;
+    padding: 2%;
+    border-radius: 25px;
+    overflow: auto;
+}
+
+.annonce {
+	border: 1px solid white;
+    float: left;
+    margin: 2%;
+    border-radius: 20px;
+    padding: 2%;
+}
+
+.hidden {
+	display: none;
+}
+.annonce h2, h1.title {
+	color: #369;
+}
+
+h1.title {
+	color: #369;
+    margin-left: 10%;
+}

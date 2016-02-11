@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+		Denières annonces
+{% endblock %}
+{% block stylesheets %}
+	{% stylesheets '@LBCListeAnnonceBundle/Resources/public/css/style.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
+{% block javascript %}
+    {% javascripts '@LBCListeAnnonceBundle/Resources/public/js/defaultjs.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block body %}
+	<h1 class="title">Dernières annonces</h1>
+	<div id="body">
+		{% block content %}
+		{% endblock %}
+	</div>
+{% endblock %}
