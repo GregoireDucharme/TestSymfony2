@@ -13,8 +13,14 @@
     margin: 2%;
     border-radius: 20px;
     padding: 2%;
+    width: 25%;
+    height: 200px;
+    overflow: hidden;
 }
 
+.infos {
+	float: right;
+}
 .hidden {
 	display: none;
 }

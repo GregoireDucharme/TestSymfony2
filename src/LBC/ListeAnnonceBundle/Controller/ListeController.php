@@ -9,6 +9,17 @@ use LBC\ListeAnnonceBundle\Entity\Annonce;
 
 class ListeController extends Controller
 {
+	private function getImage($crawler)
+	{
+		$node = $crawler->filter(".image-and-nb > img");
+		$imageUrl = "";
+		if (count($node) > 0)
+		{
+			$imageUrl = $node->attr("src");
+		}
+		return $imageUrl;
+	}
+
 	private function fillAnnonceRepo($manager, &$annonces)
 	{
 		$numeroPage = 1;
@@ -40,7 +51,7 @@ class ListeController extends Controller
 					if (count($tmpNode) > 0)
 						$infoNeeded[$key] = $tmpCrawler->filter('.' . $key)->text();
 				}
-				$newAnnonce = new Annonce($infoNeeded['title'], $infoNeeded['placement'], $infoNeeded['price']);
+				$newAnnonce = new Annonce($infoNeeded['title'], $infoNeeded['placement'], $infoNeeded['price'], $this->getImage($tmpCrawler));
 
 				// Si actualisation de la BDD, verification de l'existence ou non de l'annonce, si oui, fin de la boucle
 				if (!$initRepo)

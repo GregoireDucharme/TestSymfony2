@@ -18,8 +18,13 @@
 			<h2>
 				{{annonce.titre}}
 			</h2>
-			<div>{{annonce.lieu}}</div>
-			<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+			{% if (annonce.image != "") %}
+				<img src={{annonce.image}}>
+			{% endif %}
+			<div class="infos">
+				<div>{{annonce.lieu}}</div>
+				<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+			</div>
 			<div class="hidden searchWord">
 				{{annonce.titre ~ " " ~ annonce.lieu ~ " " ~ annonce.prix}}
 			</div>
