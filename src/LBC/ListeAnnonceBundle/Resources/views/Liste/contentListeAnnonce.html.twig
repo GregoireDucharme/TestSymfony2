@@ -10,8 +10,42 @@
 				<option value="prix">Prix</option>
 			</select>
 		</label>
-		<input type="text" placeholder="recherche" name="search">
 		<button name="reverse" value="reverse">Inverser</button>
+		<label>Afficher annonces sans prix<input type="checkbox" name="hide" checked></label>
+		<input type="text" placeholder="recherche" name="search">
+		Entre
+		<select name="prixminimum">
+            <option value="-1" selected>Prix minimum</option>
+            <option value="5">5</option>
+            <option value="10">10</option>            
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="2000">2000</option>
+            <option value="2500">2500</option>
+        </select> et <select name="prixmaximum">
+            <option value="5">5</option>
+            <option value="10">10</option>            
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="2000">2000</option>
+            <option value="-1" selected>Prix maximum</option>
+        </select>
 	</div>
 	{% for annonce in annonces %}
 		<a href={{ path('lbc_annonce', { 'id': annonce.id }) }}>

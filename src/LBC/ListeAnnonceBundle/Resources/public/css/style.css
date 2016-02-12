@@ -33,7 +33,7 @@
 .infos {
 	float: right;
 }
-.hidden {
+.hidden, .hiddenPrix, .hiddenSearch, .hiddenNA{
 	display: none;
 }
 

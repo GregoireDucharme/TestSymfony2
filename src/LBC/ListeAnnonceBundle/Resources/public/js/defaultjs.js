@@ -6,9 +6,9 @@
 			$textSearch = $(this).val();
 			$(".searchWord").each(function(index) {
 				if ($(this).html().toLowerCase().search($textSearch.toLowerCase()) == -1)
-					$(this).parent().hide();
+					$(this).parent().addClass("hiddenSearch");
 				else
-					$(this).parent().show();					
+					$(this).parent().removeClass("hiddenSearch");
 			})
 		});
 		function getInfo(infoName)
@@ -68,6 +68,37 @@
 		});
 
 
+		$("div.tri > select").change(function() {
+			$prixmin = $("select[name='prixminimum']").val();
+			$prixmax = $("select[name='prixmaximum']").val();
+			$infoArray = getInfo("prix");
+			$count = 0;
+			$('.annonce').each(function() {
+				if (($infoArray[$count] >= $prixmin || $prixmin == -1) && ($infoArray[$count] <= $prixmax || $prixmax == -1))
+					$(this).removeClass("hiddenPrix");
+				else
+					$(this).addClass("hiddenPrix");
+				$count++;
+			})
+		})
+
+		$("input[name='hide']").change(function() {
+			$prixmin = $("select[name='prixminimum']").val();
+			$prixmax = $("select[name='prixmaximum']").val();
+			$infoArray = getInfo("prix");
+			$count = 0;
+			$('.annonce').each(function() {
+				if ($infoArray[$count] == 0)
+				{
+					if (!$("input[name='hide']").is(':checked'))
+						$(this).addClass("hiddenNA");
+					else
+						$(this).removeClass("hiddenNA");
+	
+				}
+				$count++;
+			})
+		})
 
 		$("button[name='reverse'").click(function() 
 		{
