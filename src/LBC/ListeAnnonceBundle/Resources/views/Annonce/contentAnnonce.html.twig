@@ -16,29 +16,37 @@
 				<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
 			</div>
 		</div>
-		{% for commentaire in commentaires %}
-			<div>
-				<div>{{ commentaire.utilisateur }}</div>
-				<div><p>{{ commentaire.contenu }}</p></div>
-				<div>{{ commentaire.date | date("m/d/Y") }}</div>
-			</div>
-		{% endfor %}
-		 {% for message in app.session.flashbag.get('notice') %}
+		{% for message in app.session.flashbag.get('notice') %}
 	        {{ message }}
     	{% endfor %}
-		{% if form != null %}
-			{{form_start(form)}}
-			{{ form_label(form.utilisateur, "Nom d'utilisateur : ", {'label_attr': {'class': ''}}) }}
-		    {{ form_errors(form.utilisateur) }}
-	        {{ form_widget(form.utilisateur, {'attr': {'class': ''}}) }}
+		<div class="commentaires">
+			{% for commentaire in commentaires %}
+				<div class="commentaire">
+					<div><b class="utilisateur">{{ commentaire.utilisateur }}</b> : <p>{{ commentaire.contenu }}</p></div>
+					<div><i>Le {{ commentaire.date | date("m/d/Y") }}</i></div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="commentaires">
+			{% if form != null %}
+				{{form_start(form)}}
 
-	        {{ form_label(form.contenu, "Commentaire : ", {'label_attr': {'class': ''}}) }}
-		    {{ form_errors(form.contenu) }}
-	        {{ form_widget(form.contenu, {'attr': {'class': ''}}) }}
-
-			{{form_rest(form)}}
-			{{form_end(form)}}
-		{% endif %}
+				<div class="inputCommentaire">
+					{{ form_label(form.utilisateur, "Nom d'utilisateur : ", {'label_attr': {'class': ''}}) }}
+			    	{{ form_errors(form.utilisateur) }}
+		        	{{ form_widget(form.utilisateur, {'attr': {'class': ''}}) }}
+		        </div>
+		        <div class="inputCommentaire">
+			        {{ form_label(form.contenu, "Commentaire : ", {'label_attr': {'class': ''}}) }}
+				    {{ form_errors(form.contenu) }}
+			        {{ form_widget(form.contenu, {'attr': {'class': ''}}) }}
+			    </div>
+			    <div class="submitCommentaire">
+					{{form_rest(form)}}
+				</div>
+				{{form_end(form)}}
+			{% endif %}
+		</div>
 	{% else %}
 		<h2>Aucune annonce à afficher ici.</h2>
 	{% endif %}

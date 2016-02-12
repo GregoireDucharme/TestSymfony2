@@ -24,7 +24,6 @@
 }
 
 #annonce {
-    margin: 2%;
     border-radius: 20px;
     padding: 2%;
     width: 30%;
@@ -53,4 +52,34 @@ h1.title {
 .title a {
 	color: #369;
 	text-decoration: none;
+}	
+
+.commentaires {
+	width: 40%;
+	padding: 1%;
+	margin: auto;
+}
+
+.commentaire {
+	padding: 2%;
+	margin-bottom: 2%;
+	background-color: darkgrey;
+}
+
+.utilisateur {
+	color: #369;
+}
+
+.commentaires textarea {
+	resize: none;
+	width: 400px;
+    height: 75px;
+}
+
+.inputCommentaire {
+	padding: 1%;
+}
+
+.submitCommentaire {
+	text-align: center;
 }
