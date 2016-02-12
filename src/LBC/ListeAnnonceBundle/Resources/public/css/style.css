@@ -16,6 +16,11 @@
     width: 25%;
     height: 200px;
     overflow: hidden;
+    color: black;
+}
+
+.annonce:hover {
+	border: 1px solid #369;
 }
 
 #annonce {
