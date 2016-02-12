@@ -16,6 +16,29 @@
 				<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
 			</div>
 		</div>
+		{% for commentaire in commentaires %}
+			<div>
+				<div>{{ commentaire.utilisateur }}</div>
+				<div><p>{{ commentaire.contenu }}</p></div>
+				<div>{{ commentaire.date | date("m/d/Y") }}</div>
+			</div>
+		{% endfor %}
+		 {% for message in app.session.flashbag.get('notice') %}
+	        {{ message }}
+    	{% endfor %}
+		{% if form != null %}
+			{{form_start(form)}}
+			{{ form_label(form.utilisateur, "Nom d'utilisateur : ", {'label_attr': {'class': ''}}) }}
+		    {{ form_errors(form.utilisateur) }}
+	        {{ form_widget(form.utilisateur, {'attr': {'class': ''}}) }}
+
+	        {{ form_label(form.contenu, "Commentaire : ", {'label_attr': {'class': ''}}) }}
+		    {{ form_errors(form.contenu) }}
+	        {{ form_widget(form.contenu, {'attr': {'class': ''}}) }}
+
+			{{form_rest(form)}}
+			{{form_end(form)}}
+		{% endif %}
 	{% else %}
 		<h2>Aucune annonce à afficher ici.</h2>
 	{% endif %}
