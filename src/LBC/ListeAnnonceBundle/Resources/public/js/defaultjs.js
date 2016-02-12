@@ -56,8 +56,8 @@
 			$elementArray = [];
 			while ($count < $infoArray.length)
 			{
-				$tmpElement = $("input[name='" + $orderBy + "'][value=\""+$infoArray[$count]+"\"]").parent().clone();
-				$("input[name='" + $orderBy + "'][value=\""+$infoArray[$count++]+"\"]").parent().remove();
+				$tmpElement = $("input[name='" + $orderBy + "'][value=\""+$infoArray[$count]+"\"]").parent().parent().clone();
+				$("input[name='" + $orderBy + "'][value=\""+$infoArray[$count++]+"\"]").parent().parent().remove();
 				$elementArray.push($tmpElement);
 			}
 			$count = 0;
@@ -104,8 +104,8 @@
 		{
 			$elementArray = [];
 			$('.annonce').each(function() {
-				$tmpElement = $(this).clone();
-				$(this).remove();
+				$tmpElement = $(this).parent().clone();
+				$(this).parent().remove();
 				$elementArray.push($tmpElement);
 			})
 			$count = 0;
