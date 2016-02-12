@@ -48,8 +48,8 @@ class Commentaire
     private $date;
 
     /**
-    * @ORM\ManyToOne(targetEntity="LBC\ListeAnnonceBundle\Entity\Annonce")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\ManyToOne(targetEntity="LBC\ListeAnnonceBundle\Entity\Annonce", cascade={"remove"})
+    * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
     */
     private $annonce;
 

@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commentaire
 {
+
+    function __construct()
+    {
+        $this->date = new \DateTime();
+    }
     /**
      * @var int
      *
@@ -43,8 +48,8 @@ class Commentaire
     private $date;
 
     /**
-    * @ORM\ManyToOne(targetEntity="LBC\ListeAnnonceBundle\Entity\Annonce")
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\ManyToOne(targetEntity="LBC\ListeAnnonceBundle\Entity\Annonce", cascade={"remove"})
+    * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
     */
     private $annonce;
 
@@ -125,5 +130,28 @@ class Commentaire
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set annonce
+     *
+     * @param \LBC\ListeAnnonceBundle\Entity\Annonce $annonce
+     * @return Commentaire
+     */
+    public function setAnnonce(\LBC\ListeAnnonceBundle\Entity\Annonce $annonce)
+    {
+        $this->annonce = $annonce;
+
+        return $this;
+    }
+
+    /**
+     * Get annonce
+     *
+     * @return \LBC\ListeAnnonceBundle\Entity\Annonce 
+     */
+    public function getAnnonce()
+    {
+        return $this->annonce;
     }
 }
