@@ -2,19 +2,23 @@
 
 {% block content %}
 	<a href={{ path('lbc_liste_annonce_home')}}> &larr; Retour à la liste</a>
-	<div id="annonce">
-		<h2>
-			{{annonce.titre}}
-		</h2>
-		{% if (annonce.image != "") %}
-			<img src={{annonce.image}}>
-		{% endif %}
-		<div class="infos">
-			<div>{{annonce.date}}</div>
-			<div>{{annonce.lieu}}</div>
-			<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+	{% if annonce != null %}
+		<div id="annonce">
+			<h2>
+				{{annonce.titre}}
+			</h2>
+			{% if (annonce.image != "") %}
+				<img src={{annonce.image}}>
+			{% endif %}
+			<div class="infos">
+				<div>{{annonce.date}}</div>
+				<div>{{annonce.lieu}}</div>
+				<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+			</div>
 		</div>
-	</div>
+	{% else %}
+		<h2>Aucune annonce à afficher ici.</h2>
+	{% endif %}
 	{% if prevAnnonce != null %}
 		<a href={{ path('lbc_annonce', { 'id': prevAnnonce.id }) }}>
 			<div class="annonce">

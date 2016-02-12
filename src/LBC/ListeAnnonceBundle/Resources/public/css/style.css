@@ -47,6 +47,10 @@
 }
 
 h1.title {
-	color: #369;
     margin-left: 10%;
+}
+
+.title a {
+	color: #369;
+	text-decoration: none;
 }

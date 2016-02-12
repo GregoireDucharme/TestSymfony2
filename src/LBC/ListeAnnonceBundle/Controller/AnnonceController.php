@@ -17,14 +17,8 @@ class AnnonceController extends Controller
 		$annonce = $annonceRepo->find($id);
 		$prevAnnonce = null;
 		$nextAnnonce = null;
-		if ($id > 1)
-			$prevAnnonce = $annonceRepo->find($id - 1);
-		if ($id < 99)
-			$nextAnnonce = $annonceRepo->find($id + 1);
-		if ($annonce === null)
-		{
-			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas. Contactez via un courriel l'administrateur du site.");
-		}
+		$prevAnnonce = $annonceRepo->find($id - 1);
+		$nextAnnonce = $annonceRepo->find($id + 1);
         return new Response($this->renderView("LBCListeAnnonceBundle:Annonce:contentAnnonce.html.twig", array('prevAnnonce' => $prevAnnonce, 'nextAnnonce' => $nextAnnonce, 'annonce' => $annonce)));
     }
 }
