@@ -12,12 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Annonce
 {
-    function __construct($title, $placement, $price, $date, $imageUrl)
+    function __construct($title, $placement, $price, $date, $lbcUrl, $imageUrl)
     {
         $this->titre = $title;
         $this->lieu = trim($placement);
         $this->prix = (int)$price;
         $this->date = $date;
+        $this->lbcUrl = $lbcUrl;
         $this->image = $imageUrl;
     }
     public function Compare($annonceToCompare)
@@ -63,7 +64,14 @@ class Annonce
      */
     private $image;
 
- /**
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lbcurl", type="string", length=255)
+     */
+    private $lbcUrl;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="date", type="string", length=255)
@@ -193,5 +201,28 @@ class Annonce
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set lbcUrl
+     *
+     * @param string $lbcUrl
+     * @return Annonce
+     */
+    public function setLbcUrl($lbcUrl)
+    {
+        $this->lbcUrl = $lbcUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get lbcUrl
+     *
+     * @return string 
+     */
+    public function getLbcUrl()
+    {
+        return $this->lbcUrl;
     }
 }

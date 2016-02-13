@@ -51,7 +51,8 @@ class ListeController extends Controller
 					if (count($tmpNode) > 0)
 						$infoNeeded[$key] = $tmpCrawler->filter('.' . $key)->text();
 				}
-				$newAnnonce = new Annonce($infoNeeded['title'], $infoNeeded['placement'], $infoNeeded['price'], $infoNeeded['date'], $this->getImage($tmpCrawler));
+				$lbcUrl = $tmpCrawler->parents()->attr("href"); 
+				$newAnnonce = new Annonce($infoNeeded['title'], $infoNeeded['placement'], $infoNeeded['price'], $infoNeeded['date'], $lbcUrl ,$this->getImage($tmpCrawler));
 
 				// Si actualisation de la BDD, verification de l'existence ou non de l'annonce, si oui, fin de la boucle
 				if (!$initRepo)

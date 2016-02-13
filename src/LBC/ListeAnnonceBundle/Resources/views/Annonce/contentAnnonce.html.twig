@@ -14,6 +14,7 @@
 				<div>{{annonce.date}}</div>
 				<div>{{annonce.lieu}}</div>
 				<div>{{ annonce.prix == 0 ? "Prix non renseigné" : annonce.prix ~ "€"}}</div>
+				<div><a href="{{annonce.lbcUrl}}" target="_blank">Accéder à cette annonce sur Leboncoin.fr</a></div>
 			</div>
 		</div>
 		{% for message in app.session.flashbag.get('notice') %}
