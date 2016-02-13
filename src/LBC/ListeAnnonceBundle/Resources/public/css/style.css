@@ -83,3 +83,25 @@ h1.title {
 .submitCommentaire {
 	text-align: center;
 }
+
+/**
+* Responsive
+**/
+@media (max-width:768px) {
+    .annonce, .commentaires {
+    	width:92%;
+    }
+    .commentaires textarea {
+    	width: 100
+    }
+    #annonce {
+    	width:80%;
+    	height: 300px;
+    }
+    .title a {
+    	font-size: 200%;
+	}
+	h1.title {
+    	margin-left: 1%;
+	}
+}
