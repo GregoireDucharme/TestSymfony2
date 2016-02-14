@@ -20,6 +20,7 @@ class Annonce
         $this->date = $date;
         $this->lbcUrl = $lbcUrl;
         $this->image = $imageUrl;
+        $this->date_creation = new \Datetime();
     }
     public function Compare($annonceToCompare)
     {
@@ -79,10 +80,18 @@ class Annonce
     private $date;
 
     /**
+     * @var \Datetime
+     *
+     * @ORM\Column(name="date_creation", type="date", length=255)
+     */
+    private $date_creation;
+
+    /**
      * Get id
      *
      * @return integer 
      */
+
     public function getId()
     {
         return $this->id;
@@ -224,5 +233,28 @@ class Annonce
     public function getLbcUrl()
     {
         return $this->lbcUrl;
+    }
+
+    /**
+     * Set date_creation
+     *
+     * @param string $dateCreation
+     * @return Annonce
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->date_creation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get date_creation
+     *
+     * @return string 
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
     }
 }

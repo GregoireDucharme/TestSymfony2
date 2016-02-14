@@ -25,6 +25,7 @@ class AnnonceController extends Controller
 		$nextAnnonce = $annonceRepo->find($id + 1);
 
 
+		// Creation formulaire ajout commentaire
 	    $commentaire = new commentaire();
 	    $formBuilder = $this->get('form.factory')->createBuilder('form', $commentaire);
 	    $formBuilder
@@ -33,6 +34,8 @@ class AnnonceController extends Controller
 	      ->add('Publier',      'submit');
 	    $form = $formBuilder->getForm();
 
+
+	    // Gère la réponse du formulaire
 	    if ($annonce != null && $form->handleRequest($request)->isValid()) {
 	    	$commentaire->setAnnonce($annonce);
 	    	$manager->persist($commentaire);

@@ -66,11 +66,11 @@ class ListeController extends Controller
 					}
 				if ($bddUpToDate == true)
 					break;
-
+				// Sinnon stockage de l'annonce
 				$newAnnonces[] = $newAnnonce;
 				$count++;
 				$countNew++;
-				if ($countNew > 100 || ($count > 100 && $initRepo == true))
+				if ($countNew > 100)
 				{
 					$bddUpToDate = true;
 					break;
@@ -81,7 +81,7 @@ class ListeController extends Controller
 		}
 
 		// Si actualisation de la BDD, vérification du nombre d'article, si celui-ci est supérieur a 100 suppresion des plus anciens
-		if (!$initRepo)
+		if ($initRepo == false)
 		{
 			$annonces = array_merge($newAnnonces, $annonces);
 			$count = count($annonces);
@@ -99,7 +99,7 @@ class ListeController extends Controller
     {
     	$manager = $this->getDoctrine()->getManager();
 		$annonceRepo = $manager->getRepository('LBCListeAnnonceBundle:Annonce');
-		$annonces = $annonceRepo->findAll();
+		$annonces = $annonceRepo->findAll(array("date_creation" => "asc"));
     	$this->fillAnnonceRepo($manager, $annonces);
 		$manager->flush();
 		$annonces = $annonceRepo->findAll();
