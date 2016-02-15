@@ -11,6 +11,7 @@ class ListeController extends Controller
 {
 	private function getImage($crawler)
 	{
+		// Récupère l'url de l'image de l'annonce
 		$node = $crawler->filter(".image-and-nb > img");
 		$imageUrl = "";
 		if (count($node) > 0)
